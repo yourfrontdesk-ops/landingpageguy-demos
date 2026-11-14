@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vox Solutions — Health & Safety and HR Platform</title>
+  <!-- Font & icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+      color: #0b2b3c;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: #0b2b3c;
+    }
+
+    .logo i {
+      color: #1e7b6b;
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-weight: 500;
+      color: #2d4e5e;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1e7b6b;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #1e7b6b;
+      background: transparent;
+      color: #1e7b6b;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #1e7b6b;
+      color: white;
+    }
+
+    .btn-solid {
+      background: #1e7b6b;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-solid:hover {
+      background: #155f52;
+    }
+
+    .btn-solid i {
+      font-size: 0.9rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      padding: 40px 0 60px;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #e2f0ed;
+      color: #1e7b6b;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: #0b2b3c;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #1e7b6b;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #3f5c6b;
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      flex: 1 1 400px;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      padding: 24px 20px 20px;
+      border: 1px solid #e5eeeb;
+    }
+
+    .mockup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      color: #1b4a4a;
+    }
+
+    .mockup-header i {
+      color: #1e7b6b;
+      margin-right: 6px;
+    }
+
+    .mockup-cards {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: #f4f9f7;
+      border-radius: 16px;
+      padding: 14px 16px;
+      flex: 1 1 100px;
+      border-left: 4px solid #1e7b6b;
+    }
+
+    .stat-card .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #4d6b77;
+      font-weight: 600;
+    }
+
+    .stat-card .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0b2b3c;
+      line-height: 1.2;
+    }
+
+    .mini-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mini-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9fcfa;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      border: 1px solid #e0ebe7;
+    }
+
+    .mini-item .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      background: #e8f3f1;
+      color: #1e7b6b;
+    }
+
+    .badge.warn {
+      background: #fef4e6;
+      color: #b65f00;
+    }
+
+    .badge.danger {
+      background: #fdeaea;
+      color: #b33c3c;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #0b2b3c;
+    }
+
+    .section-sub {
+      color: #4d6b77;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* ===== FEATURES GRID ===== */
+    .features {
+      padding: 60px 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 28px 24px;
+      border-radius: 24px;
+      border: 1px solid #e2ece8;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-icon {
+      background: #e2f0ed;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e7b6b;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card p {
+      color: #3f5c6b;
+      font-size: 0.95rem;
+    }
+
+    /* ===== ROLE BANNER ===== */
+    .roles {
+      background: white;
+      border-radius: 40px;
+      padding: 48px 40px;
+      margin: 40px 0;
+      border: 1px solid #e2ece8;
+    }
+
+    .roles h2 {
+      font-size: 1.8rem;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+
+    .role-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .role-item i {
+      font-size: 1.5rem;
+      color: #1e7b6b;
+      background: #e2f0ed;
+      padding: 10px;
+      border-radius: 14px;
+      width: 44px;
+      text-align: center;
+    }
+
+    .role-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .role-item span {
+      font-size: 0.9rem;
+      color: #3f5c6b;
+    }
+
+    /* ===== PREVIEW SECTION (MOBILE + DESKTOP) ===== */
+    .preview-section {
+      padding: 60px 0;
+    }
+
+    .preview-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .desktop-preview {
+      flex: 1 1 500px;
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid #e2ece8;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.05);
+    }
+
+    .desktop-preview .browser-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .browser-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d1ddd9;
+      display: inline-block;
+    }
+
+    .browser-bar span:first-child {
+      background: #f5a3a3;
+    }
+
+    .browser-bar span:nth-child(2) {
+      background: #f5d6a3;
+    }
+
+    .browser-bar span:nth-child(3) {
+      background: #a3d9c7;
+    }
+
+    .desktop-ui {
+      display: flex;
+      gap: 20px;
+    }
+
+    .sidebar-mock {
+      width: 100px;
+      flex-shrink: 0;
+      background: #f2f8f6;
+      border-radius: 16px;
+      padding: 16px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sidebar-mock div {
+      height: 8px;
+      background: #cbdad6;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .sidebar-mock div:first-child {
+      background: #1e7b6b;
+      width: 70%;
+    }
+
+    .main-mock {
+      flex: 1;
+      background: #f9fcfa;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .main-mock .row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .main-mock .row .card {
+      flex: 1;
+      height: 50px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #e0ebe7;
+    }
+
+    .main-mock .list-item {
+      background: white;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border: 1px solid #e0ebe7;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .main-mock .list-item .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1e7b6b;
+    }
+
+    .main-mock .list-item .dot.amber {
+      background: #e6a23c;
+    }
+
+    .mobile-preview {
+      flex: 0 1 260px;
+      background: white;
+      border-radius: 40px;
+      padding: 20px 16px;
+      border: 1px solid #e2ece8;
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-notch {
+      width: 100px;
+      height: 6px;
+      background: #e2ece8;
+      border-radius: 10px;
+      margin: 0 auto 20px;
+    }
+
+    .mobile-ui {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-ui .task {
+      background: #f4f9f7;
+      border-radius: 14px;
+      padding: 12px;
+      border-left: 4px solid #1e7b6b;
+      font-size: 0.8rem;
+    }
+
+    .mobile-ui .task.warn {
+      border-left-color: #e6a23c;
+    }
+
+    .mobile-ui .tab-bar {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e2ece8;
+      color: #6a8b97;
+    }
+
+    .mobile-ui .tab-bar i {
+      font-size: 1rem;
+    }
+
+    .mobile-ui .tab-bar i.active {
+      color: #1e7b6b;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      background: linear-gradient(135deg, #0b2b3c 0%, #144a52 100%);
+      border-radius: 48px;
+      padding: 64px 40px;
+      text-align: center;
+      color: white;
+      margin: 60px 0;
+    }
+
+    .cta h2 {
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: #b7d0d4;
+      max-width: 520px;
+      margin: 0 auto 32px;
+      font-size: 1.1rem;
+    }
+
+    .cta .btn-solid {
+      background: white;
+      color: #0b2b3c;
+      font-weight: 600;
+    }
+
+    .cta .btn-solid:hover {
+      background: #eef6f4;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 40px 0 30px;
+      border-top: 1px solid #e2ece8;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #5b7a88;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero {
+        padding: 20px 0 40px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none; /* simple landing, hide nav on mobile for brevity */
+      }
+
+      .roles {
+        padding: 32px 20px;
+      }
+
+      .cta {
+        padding: 40px 20px;
+        border-radius: 32px;
+      }
+
+      .cta h2 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .desktop-ui {
+        flex-direction: column;
+      }
+
+      .sidebar-mock {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .sidebar-mock div {
+        width: 40px;
+        height: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-solid, .btn-outline {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .stat-card .value {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-shield-halved"></i>
+      <span>Vox Solutions</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Platform</a>
+      <a href="#">Solutions</a>
+      <a href="#">Pricing</a>
+      <a href="#">Resources</a>
+    </div>
+    <button class="btn-outline">Client login</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Health, Safety & HR — unified</div>
+      <h1>One secure platform for <span>clients, compliance & people.</span></h1>
+      <p>Publish documents, track sign-offs, manage training, run site checklists, book audits and handle change requests — all from a single dashboard that works on phone and desktop.</p>
+      <div class="hero-actions">
+        <button class="btn-solid"><i class="fas fa-arrow-right"></i> Request a demo</button>
+        <button class="btn-outline">Explore the platform</button>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="mockup-header">
+        <span><i class="fas fa-building"></i> Acme Ltd — Workspace</span>
+        <span class="badge">Live preview</span>
+      </div>
+      <div class="mockup-cards">
+        <div class="stat-card">
+          <div class="label">Employees</div>
+          <div class="value">24</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Outstanding</div>
+          <div class="value">6</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Overdue</div>
+          <div class="value">2</div>
+        </div>
+      </div>
+      <div class="mini-list">
+        <div class="mini-item">
+          <div class="left"><i class="fas fa-file-signature" style="color:#1e7b6b;"></i> Health & Safety Policy v3.2</div>
+          <span class="badge">18/24 signed</span>
+        </div>
+        <div class="mini-item">
+          <div class="left"><i class="fas fa-fire-extinguisher" style="color:#b65f00;"></i> Fire Safety Procedure v1.4</div>
+          <span class="badge warn">Due soon</span>
+        </div>
+        <div class="mini-item">
+          <div class="left"><i class="fas fa-clipboard-check" style="color:#1e7b6b;"></i> Site inspection — 12 Industrial Way</div>
+          <span class="badge">Draft</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <h2 class="section-title">Everything in one place</h2>
+    <p class="section-sub">Built for Vox Solutions administrators, client managers and employees — secure, auditable, and easy to use on any device.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-file-contract"></i></div>
+        <h3>Documents & sign-off</h3>
+        <p>Upload Word/PDF, version control, read-and-understood acknowledgements and e-signatures with full audit trail.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-table-list"></i></div>
+        <h3>Training matrix</h3>
+        <p>Editable matrix for all named employees, with expiry notifications so you never miss a renewal.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-mobile-screen"></i></div>
+        <h3>Live site checklists</h3>
+        <p>Create checklists on phone or tablet from templates, attach photos, flag issues and track follow-ups to closure.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+        <h3>Audit bookings</h3>
+        <p>See available slots, book or reschedule audits, and accept unplanned audit windows — all confirmed automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bell"></i></div>
+        <h3>Change requests</h3>
+        <p>Submit amendments or workplace changes, attach files and track status with full response history.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Resource library</h3>
+        <p>Searchable library of templates and guidance with per-client visibility control.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section class="roles">
+    <h2>One platform, three views</h2>
+    <div class="role-grid">
+      <div class="role-item">
+        <i class="fas fa-user-tie"></i>
+        <div>
+          <strong>Vox administrators</strong>
+          <span>Cross-client dashboard, publish docs, manage audits & requests.</span>
+        </div>
+      </div>
+      <div class="role-item">
+        <i class="fas fa-user-gear"></i>
+        <div>
+          <strong>Client managers</strong>
+          <span>Own workspace, issue documents, monitor completion, book audits.</span>
+        </div>
+      </div>
+      <div class="role-item">
+        <i class="fas fa-user"></i>
+        <div>
+          <strong>Employees</strong>
+          <span>View resources, sign documents, complete checklists on mobile.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVIEW: DESKTOP + MOBILE -->
+  <section class="preview-section">
+    <h2 class="section-title">Works beautifully on desktop & mobile</h2>
+    <p class="section-sub">From the office to the site — the same secure platform, wherever you are.</p>
+    <div class="preview-grid">
+      <!-- Desktop mock -->
+      <div class="desktop-preview">
+        <div class="browser-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="desktop-ui">
+          <div class="sidebar-mock">
+            <div></div><div></div><div></div><div></div><div></div>
+          </div>
+          <div class="main-mock">
+            <div class="row">
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+            </div>
+            <div class="list-item">
+              <div><i class="fas fa-file-signature" style="color:#1e7b6b; margin-right:6px;"></i> H&S Policy v3.2</div>
+              <span class="dot"></span>
+            </div>
+            <div class="list-item">
+              <div><i class="fas fa-fire-extinguisher" style="color:#e6a23c; margin-right:6px;"></i> Fire Safety v1.4</div>
+              <span class="dot amber"></span>
+            </div>
+            <div class="list-item">
+              <div><i class="fas fa-clipboard-check" style="color:#1e7b6b; margin-right:6px;"></i> Site inspection — draft</div>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile mock -->
+      <div class="mobile-preview">
+        <div class="mobile-notch"></div>
+        <div class="mobile-ui">
+          <div style="font-weight:600; font-size:0.8rem; color:#1e7b6b;">ACME LTD</div>
+          <div class="task">
+            <i class="fas fa-file-signature" style="color:#1e7b6b;"></i> Health & Safety Policy v3.2
+            <div style="font-size:0.7rem; color:#b65f00; margin-top:4px;">Due 15 Nov · sign now</div>
+          </div>
+          <div class="task warn">
+            <i class="fas fa-fire-extinguisher" style="color:#b65f00;"></i> Fire Safety Procedure v1.4
+            <div style="font-size:0.7rem; color:#b65f00; margin-top:4px;">Due 20 Nov</div>
+          </div>
+          <div class="task" style="border-left-color:#1e7b6b; background:#ffffff;">
+            <i class="fas fa-clipboard-list" style="color:#1e7b6b;"></i> New site checklist
+            <div style="font-size:0.7rem; color:#1e7b6b; margin-top:4px;">+ Start inspection</div>
+          </div>
+          <div class="tab-bar">
+            <i class="fas fa-house active"></i>
+            <i class="fas fa-file-lines"></i>
+            <i class="fas fa-clipboard-check"></i>
+            <i class="fas fa-book"></i>
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to simplify health, safety and HR?</h2>
+    <p>Give your clients a secure, mobile-friendly platform they’ll actually use. Get in touch for a personalised demo.</p>
+    <button class="btn-solid"><i class="fas fa-paper-plane"></i> Request a demo</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>© 2025 Vox Solutions Ltd. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Support</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

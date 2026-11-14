@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Greenwood Peterborough Concept</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: calm two-column bands on a cool mist ground; orange is reserved for anything that starts a phone call. */
+:root{
+  --navy:#1B3051;          /* from the logo */
+  --navy-deep:#122240;
+  --navy-soft:#2C4470;
+  --ink:#1E2533;
+  --muted:#556074;
+  --call:#C2601A;          /* call actions only */
+  --call-hover:#A9500F;
+  --orange:#F0A35E;
+  --orange-soft:#FCEEDF;
+  --sage:#3F8C80;
+  --sage-soft:#E2F2EF;
+  --leaf:#93CEC4;          /* logo leaf */
+  --mist:#F3F5F9;
+  --line:#E1E6EF;
+  --card:#FFFFFF;
+  --ph:#FFF2A8;
+
+  --font-display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body:"Fira Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --r-sm:8px; --r-md:14px; --r-lg:22px;
+  --shadow:0 1px 2px rgba(27,48,81,.06), 0 8px 24px rgba(27,48,81,.08);
+  --wrap:1180px;
+  --gutter-l:max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(20px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+img{display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);color:var(--navy);line-height:1.15;margin:0;text-wrap:balance;font-weight:600;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,4.4vw,3.4rem)}
+h2{font-size:clamp(1.7rem,3.2vw,2.5rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--call)}
+.lede{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.section{padding-block:clamp(56px,8vw,104px)}
+.section-head{display:grid;gap:14px;max-width:720px;margin-bottom:clamp(28px,4vw,48px)}
+.tnum{font-variant-numeric:tabular-nums}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.cover{width:100%;height:100%;object-fit:cover}
+
+/* content to confirm */
+body.show-ph .ph{background:var(--ph);box-shadow:0 0 0 2px var(--ph);border-radius:3px;color:var(--ink)}
+
+/* ---------- concept bar ---------- */
+.concept{background:var(--navy-deep);color:#C9D2E3;font-size:.82rem}
+.concept .wrap{display:flex;gap:8px 20px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:8px}
+.concept strong{color:#fff;font-weight:600}
+.toggle{display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.toggle input{accent-color:var(--orange);width:16px;height:16px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;font-weight:600;text-decoration:none;cursor:pointer;border:0;font-family:inherit;font-size:1rem;line-height:1.2;transition:background .15s, color .15s, transform .15s, box-shadow .15s}
+.btn svg{flex:none}
+.btn-call{background:var(--call);color:#fff;padding:14px 26px;box-shadow:0 6px 18px rgba(194,96,26,.28)}
+.btn-call:hover{background:var(--call-hover);transform:translateY(-1px)}
+.btn-call .num{font-size:1.2rem;font-weight:700;letter-spacing:.01em}
+.btn-call.lg{padding:14px 30px 14px 14px;text-align:left}
+.btn-call.lg .stack{display:grid;line-height:1.15}
+.btn-call.lg small{font-size:.8rem;font-weight:500;opacity:.92}
+.btn-call.lg .num{font-size:1.5rem}
+.btn-call .ic{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center}
+.btn-ghost{background:transparent;color:var(--navy);padding:14px 24px;box-shadow:inset 0 0 0 2px var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.link-call{color:var(--call);font-weight:600;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.link-call:hover{text-decoration:underline}
+
+/* ---------- header ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:#fff}
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.97);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid transparent;transition:border-color .2s, box-shadow .2s}
+.site-header.scrolled{border-color:var(--line);box-shadow:0 4px 18px rgba(27,48,81,.07)}
+.site-header .wrap{display:flex;align-items:center;gap:28px;min-height:84px}
+.logo{display:block;flex:none;width:170px}
+.logo img{width:100%;height:auto}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:.95rem;font-weight:500}
+.nav a{text-decoration:none;color:var(--navy)}
+.nav a:hover{color:var(--call)}
+.nav a[aria-current]{color:var(--call)}
+.head-call{display:flex;align-items:center;gap:16px;margin-left:8px}
+.head-call .meta{display:grid;text-align:right;line-height:1.25}
+.head-call .meta b{font-size:.82rem;color:var(--navy);font-weight:600}
+.head-call .meta span{font-size:.78rem;color:var(--muted)}
+.head-call .btn-call{padding:12px 22px}
+.mobile-call{display:none}
+@media (max-width:1100px){.nav{display:none}.head-call{margin-left:auto}}
+@media (max-width:640px){
+  .site-header .wrap{min-height:66px;gap:12px}
+  .head-call{display:none}
+  .logo{width:132px}
+  .mobile-call{display:inline-flex;margin-left:auto;padding:10px 16px;font-size:.95rem}
+}
+
+/* ---------- hero ---------- */
+.hero{background:#fff;padding-block:clamp(28px,4.5vw,60px) clamp(48px,6vw,80px)}
+.hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,5vw,64px);align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.badge-row{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 7px;border-radius:999px;background:var(--sage-soft);color:#245F55;font-size:.85rem;font-weight:600}
+.pill .dot{width:20px;height:20px;border-radius:50%;background:var(--sage);display:grid;place-items:center;color:#fff}
+.pill.alt{background:var(--orange-soft);color:#8A4210}
+.pill.alt .dot{background:var(--call)}
+.hero h1 em{font-style:normal;color:var(--call)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.ticks{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.95rem;color:var(--ink);font-weight:500}
+.ticks li{display:inline-flex;align-items:center;gap:8px}
+.ticks svg{color:var(--sage)}
+.hero-media{position:relative;min-width:0}
+.hero-photo{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/4.2;background:var(--mist)}
+.hero-photo img{object-position:62% center}
+.float{position:absolute;background:#fff;border-radius:var(--r-md);box-shadow:0 14px 40px rgba(27,48,81,.18);padding:14px 16px}
+.float.cqc{left:-28px;bottom:32px}
+.float.review{right:16px;bottom:16px;max-width:250px;display:grid;gap:6px}
+.cqc-badge{display:grid;gap:5px;font-size:.72rem;line-height:1.1}
+.cqc-badge .inspected{font-size:.68rem;color:var(--muted)}
+.cqc-badge .rated{background:#3D8B37;color:#fff;font-weight:600;font-size:.95rem;padding:4px 10px;border-radius:4px;width:max-content}
+.cqc-logo{display:flex;align-items:center;gap:6px;color:#5F2A73;font-weight:600;font-size:.8rem;line-height:1}
+.cqc-logo svg{width:22px;height:22px}
+.stars{display:inline-flex;gap:2px;color:var(--orange)}
+.float.review q{font-family:var(--font-display);font-size:1rem;color:var(--navy);line-height:1.35}
+.float.review small{color:var(--muted);font-size:.78rem}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-photo{aspect-ratio:16/10}
+  .float.cqc{left:12px;bottom:-24px}
+  .float.review{display:none}
+}
+@media (max-width:640px){
+  .cta-row .btn{width:100%}
+  .btn-call.lg{justify-content:flex-start}
+}
+
+/* ---------- trust strip ---------- */
+.trust{padding-block:0 8px;margin-top:-28px;position:relative}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.trust-item{display:flex;gap:14px;align-items:flex-start;padding:22px 22px;min-width:0}
+.trust-item + .trust-item{border-left:1px solid var(--line)}
+.trust-item .ti{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--mist);color:var(--navy)}
+.trust-item b{display:block;color:var(--navy);font-size:1rem;line-height:1.3}
+.trust-item span{font-size:.88rem;color:var(--muted);line-height:1.4;display:block;margin-top:3px}
+@media (max-width:980px){.trust{margin-top:0}.trust-grid{grid-template-columns:repeat(2,1fr)}.trust-item:nth-child(3){border-left:0}.trust-item:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:520px){.trust-grid{grid-template-columns:1fr}.trust-item + .trust-item{border-left:0;border-top:1px solid var(--line)}}
+
+/* ---------- care types ---------- */
+.care-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.care-card{background:#fff;border-radius:var(--r-lg);padding:28px;display:grid;gap:14px;grid-template-rows:auto auto auto 1fr auto;border:1px solid var(--line);min-width:0;transition:box-shadow .2s, transform .2s}
+.care-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.care-card .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.care-card .ci{width:52px;height:52px;border-radius:14px;background:var(--orange-soft);color:var(--call);display:grid;place-items:center}
+.care-card .meta{font-size:.8rem;font-weight:600;color:var(--sage);background:var(--sage-soft);padding:4px 10px;border-radius:999px}
+.care-card p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:4px 0 0;align-content:flex-start}
+.tags li{font-size:.84rem;padding:5px 11px;border-radius:999px;background:var(--mist);color:var(--navy);font-weight:500}
+.care-card .foot{padding-top:16px;border-top:1px solid var(--line)}
+@media (max-width:760px){.care-grid{grid-template-columns:1fr}}
+.unsure{margin-top:24px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:26px 30px}
+.unsure h3{color:#fff;font-size:1.35rem}
+.unsure p{color:#C9D2E3;margin-top:4px}
+.unsure > div{min-width:0;flex:1 1 320px}
+
+/* ---------- why ---------- */
+.why{background:#fff}
+.why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.why-photo{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3.6;position:relative}
+.why-photo .tag{position:absolute;left:16px;bottom:16px;right:16px;background:rgba(255,255,255,.95);border-radius:var(--r-md);padding:14px 16px;font-size:.92rem;color:var(--ink);display:flex;gap:12px;align-items:center;max-width:360px}
+.why-photo .tag .stars{flex:none}
+.why-list{list-style:none;padding:0;margin:0;display:grid;gap:22px}
+.why-list li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.why-list .wi{width:44px;height:44px;border-radius:12px;background:var(--sage-soft);color:var(--sage);display:grid;place-items:center}
+.why-list b{display:block;color:var(--navy);font-size:1.08rem;margin-bottom:2px}
+.why-list p{color:var(--muted);font-size:.98rem}
+.why-copy{display:grid;gap:28px;min-width:0}
+@media (max-width:900px){.why .wrap{grid-template-columns:1fr}.why-photo{aspect-ratio:16/10}}
+
+/* ---------- reviews ---------- */
+.reviews-head{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
+.award{display:flex;gap:14px;align-items:center;background:#fff;border-radius:var(--r-md);padding:12px 18px 12px 12px;box-shadow:var(--shadow)}
+.award .medal{width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:.78rem;line-height:1;text-align:center}
+.award .medal b{display:block;font-size:1.25rem}
+.award small{display:block;color:var(--muted);font-size:.82rem}
+.award strong{color:var(--navy);font-size:.95rem}
+.review-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.feature-quote{margin:0;background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:clamp(28px,4vw,48px);display:grid;gap:22px;align-content:start;position:relative;overflow:hidden}
+.feature-quote::after{content:"\201C";position:absolute;right:24px;top:-30px;font-family:var(--font-display);font-size:14rem;line-height:1;color:rgba(255,255,255,.06)}
+.feature-quote blockquote{margin:0;font-family:var(--font-display);font-size:clamp(1.35rem,2.3vw,1.75rem);line-height:1.35;font-weight:500}
+.feature-quote .full{color:#C9D2E3;font-size:.98rem;max-width:62ch}
+.who{display:flex;align-items:center;gap:12px;font-size:.92rem}
+.who .av{width:42px;height:42px;border-radius:50%;background:var(--orange);color:var(--navy-deep);display:grid;place-items:center;font-weight:700;flex:none}
+.who small{display:block;opacity:.75}
+.side-quotes{display:grid;gap:24px;min-width:0}
+.quote-card{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;display:grid;gap:14px;align-content:start}
+.quote-card blockquote{margin:0;font-size:1.02rem;color:var(--ink)}
+.quote-card .who .av{background:var(--mist);color:var(--navy)}
+.quote-card .who small{color:var(--muted);opacity:1}
+.reviews-foot{margin-top:28px;display:flex;justify-content:center}
+@media (max-width:900px){.review-grid{grid-template-columns:1fr}}
+
+/* ---------- process ---------- */
+.process{background:#fff}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative}
+.steps::before{content:"";position:absolute;left:24px;right:24px;top:24px;height:2px;background:repeating-linear-gradient(90deg,var(--orange) 0 8px,transparent 8px 14px)}
+.step{position:relative;display:grid;gap:10px;align-content:start;min-width:0}
+.step .n{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--orange);color:var(--call);font-family:var(--font-display);font-weight:700;font-size:1.25rem;display:grid;place-items:center;position:relative;z-index:1}
+.step:first-child .n{background:var(--call);border-color:var(--call);color:#fff}
+.step h3{font-size:1.12rem;margin-top:6px}
+.step p{font-size:.94rem;color:var(--muted)}
+.step .flag{font-size:.8rem;font-weight:600;color:#245F55;background:var(--sage-soft);padding:3px 9px;border-radius:999px;width:max-content;max-width:100%}
+@media (max-width:980px){
+  .steps{grid-template-columns:1fr;gap:0}
+  .steps::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--orange) 0 8px,transparent 8px 14px)}
+  .step{grid-template-columns:48px 1fr;column-gap:18px;padding-bottom:26px}
+  .step .n{grid-row:span 3}
+  .step h3{margin-top:10px}
+}
+.step-cta{margin-top:40px;background:var(--mist);border-radius:var(--r-lg);padding:26px 30px;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between}
+.step-cta > div{flex:1 1 300px;min-width:0}
+.step-cta h3{font-size:1.4rem}
+.step-cta p{color:var(--muted);margin-top:4px}
+
+/* ---------- team ---------- */
+.team .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.team-photo{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/4.2}
+.team-photo img{object-position:40% center}
+.team-copy{display:grid;gap:20px;min-width:0}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.person{display:flex;gap:12px;align-items:center;padding:14px;border-radius:var(--r-md);background:#fff;border:1px solid var(--line);min-width:0}
+.person .av{width:56px;height:56px;border-radius:50%;overflow:hidden;flex:none;background:var(--sage-soft);color:var(--sage);display:grid;place-items:center;font-weight:700}
+.person b{color:var(--navy);display:block;line-height:1.25}
+.person span{color:var(--muted);font-size:.86rem;line-height:1.35;display:block}
+.office{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid var(--line);padding-top:20px}
+.office div{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;min-width:0}
+.office svg{color:var(--call);flex:none;margin-top:3px}
+.office b{display:block;color:var(--navy)}
+@media (max-width:900px){.team .wrap{grid-template-columns:1fr}.team-photo{aspect-ratio:16/10}}
+@media (max-width:560px){.office,.people{grid-template-columns:1fr}}
+
+/* ---------- areas ---------- */
+.areas{background:#fff}
+.areas .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:start}
+.areas-copy{display:grid;gap:22px;min-width:0}
+.ranges{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.range{border-radius:var(--r-md);padding:16px;background:var(--mist);display:grid;gap:4px}
+.range b{font-family:var(--font-display);font-size:1.6rem;color:var(--navy);line-height:1}
+.range span{font-size:.9rem;color:var(--muted)}
+.range i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.checker{background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:22px;display:grid;gap:12px}
+.checker label{font-weight:600}
+.checker form{display:flex;gap:10px;flex-wrap:wrap}
+.checker input{flex:1 1 200px;min-width:0;font:inherit;padding:12px 16px;border-radius:999px;border:0;background:#fff;color:var(--ink)}
+.checker .btn{padding:12px 22px;background:var(--orange);color:var(--navy-deep)}
+.checker .btn:hover{background:#fff}
+.check-result{font-size:.95rem;border-radius:var(--r-sm);padding:12px 14px;display:none;background:#fff;color:var(--ink)}
+.check-result.show{display:block}
+.check-result a{font-weight:700;color:var(--call)}
+.towns{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.towns li{font-size:.88rem;padding:6px 12px;border-radius:999px;background:var(--mist);color:var(--navy)}
+.areas-visual{display:grid;gap:16px;min-width:0}
+.map{background:var(--mist);border-radius:var(--r-lg);padding:12px;margin:0}
+.map svg{display:block;width:100%;height:auto}
+.map figcaption{font-size:.8rem;color:var(--muted);padding:8px 6px 2px}
+.areas-photo{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/8}
+.areas-photo img{object-position:center 40%}
+@media (max-width:900px){.areas .wrap{grid-template-columns:1fr}}
+@media (max-width:420px){.ranges{grid-template-columns:1fr}}
+
+/* ---------- faq ---------- */
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.faq-side{position:sticky;top:110px;display:grid;gap:22px}
+.help-card{background:#fff;border-radius:var(--r-lg);padding:24px;display:grid;gap:14px;box-shadow:var(--shadow)}
+.help-card .who{color:var(--ink)}
+.help-card .who .av{width:52px;height:52px;overflow:hidden;background:var(--sage-soft)}
+.help-card .who b{color:var(--navy)}
+.help-card .who small{opacity:1;color:var(--muted)}
+.help-card p{color:var(--muted);font-size:.96rem}
+.help-card .btn-call{width:100%}
+.faq-list{display:grid;gap:12px;min-width:0}
+details{background:#fff;border-radius:var(--r-md);border:1px solid var(--line);transition:box-shadow .2s}
+details[open]{box-shadow:var(--shadow);border-color:transparent}
+summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;gap:16px;justify-content:space-between;align-items:center;font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--navy)}
+summary::-webkit-details-marker{display:none}
+summary .chev{flex:none;width:30px;height:30px;border-radius:50%;background:var(--mist);display:grid;place-items:center;color:var(--call);transition:transform .2s}
+details[open] summary .chev{transform:rotate(180deg)}
+details .ans{padding:0 22px 22px;color:var(--muted);display:grid;gap:10px;max-width:68ch}
+details .ans a{color:var(--call);font-weight:600}
+@media (max-width:900px){.faq .wrap{grid-template-columns:1fr}.faq-side{position:static}}
+
+/* ---------- final cta ---------- */
+.final{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;right:-180px;top:-220px;background:radial-gradient(circle,rgba(240,163,94,.22),transparent 65%)}
+.final .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.final h2{color:#fff}
+.final .lede{color:#C9D2E3}
+.final-copy{display:grid;gap:22px;min-width:0}
+.bignum{font-family:var(--font-display);font-size:clamp(2.1rem,5.4vw,3.6rem);font-weight:700;color:#fff;text-decoration:none;line-height:1;display:inline-flex;align-items:center;gap:16px;width:max-content;max-width:100%}
+.bignum .ic{width:56px;height:56px;border-radius:50%;background:var(--call);display:grid;place-items:center;flex:none}
+.bignum:hover{color:var(--orange)}
+.final .facts{display:flex;flex-wrap:wrap;gap:8px 22px;color:#C9D2E3;font-size:.95rem}
+.final .facts span{display:inline-flex;gap:8px;align-items:center}
+.final .facts svg{color:var(--leaf)}
+.form-card{background:#fff;color:var(--ink);border-radius:var(--r-lg);padding:clamp(24px,3vw,36px);display:grid;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,.25);min-width:0}
+.form-card h3{font-size:1.45rem}
+.form-card .sub{color:var(--muted);font-size:.95rem;margin-top:-8px}
+.field{display:grid;gap:6px;border:0;padding:0;margin:0;min-width:0}
+.field label,.field legend{font-weight:600;font-size:.92rem;color:var(--navy);padding:0}
+.field input,.field select{font:inherit;padding:13px 16px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--mist);color:var(--ink);width:100%}
+.field input:focus,.field select:focus{outline:none;border-color:var(--navy);background:#fff}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:block;text-align:center;padding:11px 10px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--mist);cursor:pointer;font-weight:500;color:var(--ink)}
+.seg input:checked + label{border-color:var(--navy);background:#fff;color:var(--navy);font-weight:600;box-shadow:inset 0 0 0 1px var(--navy)}
+.seg input:focus-visible + label{outline:3px solid var(--orange);outline-offset:2px}
+.form-card .btn-call{width:100%;padding:16px}
+.form-note{font-size:.82rem;color:var(--muted);text-align:center}
+.form-done{display:none;background:var(--sage-soft);color:#1F5249;border-radius:var(--r-sm);padding:14px;font-size:.95rem}
+@media (max-width:900px){.final .wrap{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy-deep);color:#AEB9CD;font-size:.92rem}
+footer .wrap{padding-block:56px 32px}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px}
+footer h4{font-family:var(--font-display);color:#fff;font-size:1.05rem;margin:0 0 14px;font-weight:600}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+.foot-brand{display:grid;gap:18px;align-content:start}
+.foot-logo{width:170px;filter:brightness(0) invert(1)}
+.foot-phone{font-size:1.5rem;font-weight:700;color:#fff;font-family:var(--font-display)}
+.foot-cqc{background:#fff;border-radius:var(--r-sm);padding:10px 12px;width:max-content}
+.foot-base{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:22px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:.84rem}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
+
+/* ---------- mobile sticky call bar ---------- */
+.callbar{display:none}
+@media (max-width:640px){
+  .callbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(27,48,81,.1);
+    padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter-l)}
+  .callbar .btn-call{flex:2;padding:14px 12px}
+  .callbar .btn-ghost{flex:1;padding:14px 10px;font-size:.95rem}
+  body{padding-bottom:84px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.2 4.2L19 7"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.4 2.4 4.6-4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.8c2 .7 3.2 2.4 3.5 5.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-notes" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-adjust" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 20s-7.5-4.6-9-9.4A4.8 4.8 0 0 1 12 7a4.8 4.8 0 0 1 9 3.6C19.5 15.4 12 20 12 20z"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 18V7m0 7h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2" fill="currentColor"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-cqc" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="concept">
+  <div class="wrap">
+    <span><strong>Design concept v2</strong> · Greenwood Homecare Peterborough branch page</span>
+    <label class="toggle"><input type="checkbox" id="phToggle"> Highlight details to confirm with the client</label>
+  </div>
+</div>
+
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Greenwood Homecare home"><img src="assets/logo.svg" alt="Greenwood Homecare" width="163" height="41"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#care">Services</a>
+      <a href="#why">About us</a>
+      <a href="#areas" aria-current="page">Locations</a>
+      <a href="#faq">FAQs</a>
+      <a href="https://greenwoodhomecare.co.uk/become-a-carer-job-vacancies/">Join the team</a>
+    </nav>
+    <div class="head-call">
+      <div class="meta">
+        <b>Speak to our Peterborough team</b>
+        <span>Free advice, no obligation</span>
+      </div>
+      <a class="btn btn-call" href="tel:01733808531">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span class="num tnum">01733 808531</span>
+      </a>
+    </div>
+    <a class="btn btn-call mobile-call" href="tel:01733808531" aria-label="Call 01733 808531">
+      <svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg> Call us
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="badge-row">
+        <span class="pill"><span class="dot"><svg width="12" height="12"><use href="#i-check"/></svg></span>Rated Good by the CQC</span>
+        <span class="pill alt"><span class="dot"><svg width="12" height="12"><use href="#i-bolt"/></svg></span>Care can often start tomorrow</span>
+      </div>
+      <h1>Home care in Peterborough, from a <em>local team</em> you can talk to today</h1>
+      <p class="lede">From 30-minute visits to full-time live-in care, in Peterborough and every village within 15 miles. If it's urgent, such as a parent coming home from hospital, we can often start the same day.</p>
+      <div class="cta-row">
+        <a class="btn btn-call lg" href="tel:01733808531">
+          <span class="ic"><svg width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <span class="stack"><small>Call for free, friendly advice</small><span class="num tnum">01733 808531</span></span>
+        </a>
+        <a class="btn btn-ghost" href="#callback">Request a callback</a>
+      </div>
+      <ul class="ticks">
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>Free home assessment</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>No obligation to go ahead</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>The same familiar carers</li>
+      </ul>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo"><img class="cover" src="assets/hero-sofa.webp" alt="A Greenwood carer sharing a cup of tea with a client in his living room" width="1400" height="931" fetchpriority="high"></div>
+      <div class="float cqc">
+        <div class="cqc-badge">
+          <span class="inspected">Inspected and rated</span>
+          <span class="rated">Good</span>
+          <span class="cqc-logo"><svg aria-hidden="true"><use href="#i-cqc"/></svg>Care Quality<br>Commission</span>
+        </div>
+      </div>
+      <div class="float review">
+        <span class="stars" aria-label="5 out of 5 stars"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></span>
+        <q>Lovely, caring people from the manager's initial visit to all carers.</q>
+        <small>Sue J · Homecare.co.uk</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust" aria-label="Why families choose Greenwood">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item"><span class="ti"><svg width="22" height="22"><use href="#i-shield"/></svg></span><div><b>CQC rated Good</b><span>Independently inspected by the Care Quality Commission</span></div></div>
+      <div class="trust-item"><span class="ti"><svg width="22" height="22" style="color:var(--call)"><use href="#i-award"/></svg></span><div><b>Top 20 home care group</b><span>On Homecare.co.uk, out of more than 650</span></div></div>
+      <div class="trust-item"><span class="ti"><svg width="22" height="22"><use href="#i-bolt"/></svg></span><div><b>Care from tomorrow</b><span>Often the next day, and same day after a hospital stay</span></div></div>
+      <div class="trust-item"><span class="ti"><svg width="22" height="22"><use href="#i-home"/></svg></span><div><b>Free home assessment</b><span>We come to you, with no obligation to go ahead</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CARE TYPES -->
+<section class="section" id="care">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Home care services in Peterborough</span>
+      <h2>Care that fits around the life you already have</h2>
+      <p class="lede">Some people need a short visit each morning. Others need several visits a day, or someone there around the clock. Most families start with one of these, and we adjust as needs change.</p>
+    </div>
+    <div class="care-grid">
+      <article class="care-card">
+        <div class="top"><span class="ci"><svg width="26" height="26"><use href="#i-sun"/></svg></span><span class="meta">From 30 minutes</span></div>
+        <h3>Visiting care at home</h3>
+        <p>Regular visits to help with getting up, washing and dressing, medication, meals and getting around the home, at times that suit your routine.</p>
+        <ul class="tags"><li>Personal care</li><li>Companionship</li><li>Elderly care</li><li>Mobility</li><li>Continence care</li></ul>
+        <div class="foot"><a class="link-call" href="tel:01733808531"><svg width="16" height="16"><use href="#i-phone"/></svg>Ask about visiting care</a></div>
+      </article>
+      <article class="care-card">
+        <div class="top"><span class="ci"><svg width="26" height="26"><use href="#i-moon"/></svg></span><span class="meta">Day and night</span></div>
+        <h3>Live-in, 24-hour and night care</h3>
+        <p>Round-the-clock or overnight support from a dedicated carer, so someone with higher needs can stay safely in their own home.</p>
+        <ul class="tags"><li>24/7 live-in care</li><li>24-hour care at home</li><li>Night care</li><li>Palliative care</li></ul>
+        <div class="foot"><a class="link-call" href="tel:01733808531"><svg width="16" height="16"><use href="#i-phone"/></svg>Ask about live-in care</a></div>
+      </article>
+      <article class="care-card">
+        <div class="top"><span class="ci"><svg width="26" height="26"><use href="#i-heart"/></svg></span><span class="meta">Adults and children</span></div>
+        <h3>Specialist care for conditions</h3>
+        <p>Carers trained to support specific conditions and disabilities. Care is based on what someone needs, not their age.</p>
+        <ul class="tags"><li>Dementia and Alzheimer's</li><li>Parkinson's</li><li>Stroke</li><li>MS</li><li>COPD</li><li>Diabetes</li><li>Arthritis</li><li>Learning disabilities</li><li>Autism</li><li>Down syndrome</li><li>Physical disability</li><li>Blind and partially sighted</li><li>Bariatric care</li><li>Children</li></ul>
+        <div class="foot"><a class="link-call" href="tel:01733808531"><svg width="16" height="16"><use href="#i-phone"/></svg>Ask about specialist care</a></div>
+      </article>
+      <article class="care-card">
+        <div class="top"><span class="ci"><svg width="26" height="26"><use href="#i-bed"/></svg></span><span class="meta">Can start same day</span></div>
+        <h3>Short-term and after-hospital care</h3>
+        <p>Support while you recover from surgery or a hospital stay, or a break for a family carer. When it's urgent, we move quickly.</p>
+        <ul class="tags"><li>Hospital discharge</li><li>Reablement</li><li>Joint replacement recovery</li><li>Respite care</li></ul>
+        <div class="foot"><a class="link-call" href="tel:01733808531"><svg width="16" height="16"><use href="#i-phone"/></svg>Ask about short-term care</a></div>
+      </article>
+    </div>
+    <div class="unsure">
+      <div>
+        <h3>Not sure what kind of care you need?</h3>
+        <p>That's very common, and you don't need all the answers before you call. Working it out together is part of the free assessment.</p>
+      </div>
+      <a class="btn btn-call" href="tel:01733808531"><svg width="18" height="18"><use href="#i-phone"/></svg><span class="num tnum">01733 808531</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY GREENWOOD -->
+<section class="section why" id="why">
+  <div class="wrap">
+    <div class="why-photo">
+      <img class="cover" src="assets/patio-meal.webp" alt="A Greenwood carer serving lunch to a client on his patio" width="1100" height="731" loading="lazy">
+      <div class="tag"><span class="stars" aria-label="5 stars"><svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg></span><span>“They arrive on time, and often with humour.” <small style="color:var(--muted)">Julie W</small></span></div>
+    </div>
+    <div class="why-copy">
+      <div class="section-head" style="margin:0">
+        <span class="eyebrow">Why families choose Greenwood</span>
+        <h2>The things that matter when it's your mum or dad</h2>
+      </div>
+      <ul class="why-list">
+        <li><span class="wi"><svg width="22" height="22"><use href="#i-users"/></svg></span><div><b>Familiar faces</b><p>Wherever possible the same carers visit, so you don't have to explain your routine to someone new each time.</p></div></li>
+        <li><span class="wi"><svg width="22" height="22"><use href="#i-notes"/></svg></span><div><b>Peace of mind for family</b><p>Care notes are recorded online at each visit, so family can check in and see that all is well.</p></div></li>
+        <li><span class="wi"><svg width="22" height="22"><use href="#i-adjust"/></svg></span><div><b>Care that changes with you</b><p>We review your care plan regularly and adjust it whenever your circumstances change, sometimes at short notice.</p></div></li>
+        <li><span class="wi"><svg width="22" height="22"><use href="#i-bolt"/></svg></span><div><b>Help when you need it fast</b><p>We can often start care the next day, and on the same day for hospital discharges.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div class="section-head" style="margin:0">
+        <span class="eyebrow">What families say</span>
+        <h2>Trusted by Peterborough families</h2>
+      </div>
+      <div class="award">
+        <span class="medal"><span>Top<b>20</b></span></span>
+        <div><strong>Top 20 home care group</strong><small>Homecare.co.uk, out of more than 650</small></div>
+      </div>
+    </div>
+    <div class="review-grid">
+      <figure class="feature-quote">
+        <span class="stars" aria-label="5 out of 5 stars"><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg></span>
+        <blockquote>“On a couple of occasions an ambulance has been needed, and they have stayed with her until a family member or the ambulance has arrived.”</blockquote>
+        <p class="full">“Greenwood has been providing home care for my mother-in-law for the last 10 months. They arrive on time, complete all tasks efficiently but in a friendly manner and often with humour. Notes are recorded online at the time, and I can access them immediately, which reassures me that all is well. If I request any changes, they are happy to comply and have proved to be very flexible.”</p>
+        <figcaption class="who"><span class="av">J</span><span>Julie W<small>Homecare.co.uk</small></span></figcaption>
+      </figure>
+      <div class="side-quotes">
+        <figure class="quote-card">
+          <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg></span>
+          <blockquote>“My dad has four calls a day as he has mobility and personal needs. By being assisted at home, dad is able to live out his last days in the comfort of his house with mum.”</blockquote>
+          <figcaption class="who"><span class="av">M</span><span>Mike D<small>Homecare.co.uk</small></span></figcaption>
+        </figure>
+        <figure class="quote-card">
+          <span class="stars" aria-label="5 out of 5 stars"><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg></span>
+          <blockquote>“My mother needs 24-hour care at home. We have found Greenwood to be highly professional and very good. We could not ask for more.”</blockquote>
+          <figcaption class="who"><span class="av">J</span><span>John R<small>Homecare.co.uk</small></span></figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="reviews-foot"><a class="btn btn-ghost" href="https://greenwoodhomecare.co.uk/greenwood-homecare-peterborough-testimonials/">Read more Peterborough reviews</a></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How home care starts in Peterborough</span>
+      <h2>From your first call to your first visit</h2>
+      <p class="lede">Most people who contact us have never arranged home care before. We keep it straightforward and guide you through every stage.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="n">1</span><h3>A friendly first call</h3><p>Tell us what's happening. We'll explain how home care works and answer your questions. It's simply a conversation, with no obligation.</p></li>
+      <li class="step"><span class="n">2</span><h3>Free home assessment</h3><p>We sit down with you at home, with family if you like, to understand daily life, what's become difficult and what matters most.</p></li>
+      <li class="step"><span class="n">3</span><h3>Your personal care plan</h3><p>A plan built around you, not a fixed package, setting out what support you'll get, when, and how you'd like it delivered.</p></li>
+      <li class="step"><span class="n">4</span><h3>Your care team</h3><p>We match carers to your needs and routine and confirm visit times.</p><span class="flag">Often from the next day</span></li>
+      <li class="step"><span class="n">5</span><h3>Care starts, and we stay involved</h3><p>We review your plan with you regularly and adjust it whenever your circumstances change.</p></li>
+    </ol>
+    <div class="step-cta">
+      <div>
+        <h3>Step one is simply a conversation</h3>
+        <p>Weighing up your options or just have a few questions? Give us a call, with no commitment.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-call" href="tel:01733808531"><svg width="18" height="18"><use href="#i-phone"/></svg><span class="num tnum">01733 808531</span></a>
+        <a class="btn btn-ghost" href="#callback">Request a callback</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="team">
+  <div class="wrap">
+    <div class="team-photo"><img class="cover" src="assets/carer-smile.webp" alt="A smiling Greenwood carer chatting with a client" width="1100" height="536" loading="lazy"></div>
+    <div class="team-copy">
+      <span class="eyebrow">Your local team</span>
+      <h2>Real people, right here in Peterborough</h2>
+      <p class="lede">When you call 01733 808531, you'll speak to our Peterborough office, not a national call centre. Our management team supports our carers every day and is there for you and your family.</p>
+      <div class="people">
+        <div class="person"><span class="av"><img class="cover" src="assets/jodie.webp" alt="" width="300" height="331" loading="lazy"></span><div><b>Jodie Chatters</b><span>Registered Manager</span></div></div>
+        <div class="person"><span class="av">EM</span><div><b>Eloise Massingham</b><span>Care Coordinator, often the first person you'll speak to</span></div></div>
+      </div>
+      <div class="office">
+        <div><svg width="20" height="20"><use href="#i-pin"/></svg><span><b>Our office</b>10 Flag Business Exchange, Vicarage Farm Road, Peterborough, PE1 5TX</span></div>
+        <div><svg width="20" height="20"><use href="#i-clock"/></svg><span><b>Opening hours</b><span class="ph">Mon–Fri 9am–5pm<br>On-call support for clients 24/7</span></span></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-call" href="tel:01733808531"><svg width="18" height="18"><use href="#i-phone"/></svg><span class="num tnum">01733 808531</span></a>
+        <a class="btn btn-ghost" href="https://greenwoodhomecare.co.uk/greenwood-homecare-peterborough-team/">Meet the whole team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="section areas" id="areas">
+  <div class="wrap">
+    <div class="areas-copy">
+      <span class="eyebrow">Areas we cover</span>
+      <h2>Home care across Peterborough and the surrounding villages</h2>
+      <p class="lede">We visit clients across the city and in rural villages that some agencies can't reach.</p>
+      <div class="ranges">
+        <div class="range"><b>15 miles</b><span><i style="background:var(--call)"></i>Visiting care, from 30 minutes</span></div>
+        <div class="range"><b>30 miles</b><span><i style="background:var(--leaf)"></i>Live-in care</span></div>
+      </div>
+      <div class="checker">
+        <label for="town">Do we cover you? Type your town or village</label>
+        <form id="townForm" novalidate>
+          <input id="town" name="town" list="townList" placeholder="e.g. Stamford, Yaxley, Oundle" autocomplete="address-level2">
+          <datalist id="townList"></datalist>
+          <button class="btn" type="submit">Check</button>
+        </form>
+        <div class="check-result" id="townResult" role="status" aria-live="polite"></div>
+      </div>
+      <div>
+        <p style="font-weight:600;color:var(--navy);margin-bottom:10px">We have many clients in</p>
+        <ul class="towns"><li>Stamford</li><li>Market Deeping</li><li>Spalding</li><li>Thorney</li><li>Oundle</li><li>Ramsey</li><li>Whittlesey</li><li>Yaxley</li><li>Crowland</li><li>Wansford</li><li>and every village in between</li></ul>
+      </div>
+    </div>
+    <div class="areas-visual">
+      <figure class="map">
+        <svg viewBox="0 0 480 440" role="img" aria-label="Map of the area covered: visiting care within 15 miles of Peterborough and live-in care within 30 miles">
+          <defs><clipPath id="mapclip"><rect width="480" height="440" rx="14"/></clipPath></defs>
+          <g clip-path="url(#mapclip)">
+            <rect width="480" height="440" fill="#E9EEF5"/>
+            <path d="M-10 214 C60 205 120 222 175 220 S250 236 300 236 S400 238 490 250" fill="none" stroke="#C6D6EA" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="240" cy="230" r="300" fill="#93CEC4" fill-opacity=".22" stroke="#3F8C80" stroke-opacity=".5" stroke-dasharray="5 6"/>
+            <circle cx="240" cy="230" r="150" fill="#F0A35E" fill-opacity=".2" stroke="#C2601A" stroke-opacity=".7" stroke-dasharray="5 6"/>
+            <g font-family="Fira Sans, sans-serif" font-size="12.5" fill="#1B3051">
+              <g fill="#1B3051">
+                <circle cx="140" cy="173" r="4"/><circle cx="208" cy="155" r="4"/><circle cx="277" cy="80" r="4"/><circle cx="295" cy="195" r="4"/><circle cx="145" cy="292" r="4"/><circle cx="297" cy="312" r="4"/><circle cx="287" cy="238" r="4"/><circle cx="232" cy="268" r="4"/><circle cx="167" cy="223" r="4"/><circle cx="270" cy="157" r="4"/><circle cx="378" cy="243" r="4"/><circle cx="183" cy="93" r="4"/><circle cx="263" cy="395" r="4"/>
+              </g>
+              <text x="132" y="165" text-anchor="end">Stamford</text>
+              <text x="200" y="147" text-anchor="end">Market Deeping</text>
+              <text x="285" y="76">Spalding</text>
+              <text x="303" y="191">Thorney</text>
+              <text x="137" y="304" text-anchor="end">Oundle</text>
+              <text x="305" y="316">Ramsey</text>
+              <text x="295" y="252">Whittlesey</text>
+              <text x="222" y="284" text-anchor="end">Yaxley</text>
+              <text x="159" y="227" text-anchor="end">Wansford</text>
+              <text x="278" y="153">Crowland</text>
+              <text x="386" y="247">March</text>
+              <text x="175" y="89" text-anchor="end">Bourne</text>
+              <text x="271" y="399">Huntingdon</text>
+            </g>
+            <g font-family="Fira Sans, sans-serif" font-size="11" font-weight="600">
+              <text x="240" y="372" text-anchor="middle" fill="#A9500F">15 miles · visiting care</text>
+              <text x="240" y="426" text-anchor="middle" fill="#2E6E64">30 miles · live-in care</text>
+            </g>
+            <g>
+              <circle cx="240" cy="230" r="20" fill="#C2601A" fill-opacity=".2"/>
+              <path d="M240 242s-11-9.5-11-17.5a11 11 0 0 1 22 0c0 8-11 17.5-11 17.5z" fill="#C2601A"/>
+              <circle cx="240" cy="224" r="4" fill="#fff"/>
+              <rect x="200" y="182" width="80" height="24" rx="12" fill="#1B3051"/>
+              <text x="240" y="198" text-anchor="middle" font-family="Fira Sans, sans-serif" font-size="12" font-weight="600" fill="#fff">Our office</text>
+            </g>
+          </g>
+        </svg>
+        <figcaption>Distances are approximate. Not sure if we reach you? Call 01733 808531 and we'll tell you straight away.</figcaption>
+      </figure>
+      <div class="areas-photo"><img class="cover" src="assets/village-walk.webp" alt="A Greenwood carer walking arm in arm with a client through a village" width="1100" height="731" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+  <div class="wrap">
+    <aside class="faq-side">
+      <div class="section-head" style="margin:0">
+        <span class="eyebrow">Questions families ask</span>
+        <h2>Home care in Peterborough, answered</h2>
+      </div>
+      <div class="help-card">
+        <div class="who"><span class="av"><img class="cover" src="assets/jodie.webp" alt="" width="300" height="331" loading="lazy"></span><span><b>Prefer to talk it through?</b><small>Our Peterborough team can usually answer any question in a few minutes.</small></span></div>
+        <a class="btn btn-call" href="tel:01733808531"><svg width="18" height="18"><use href="#i-phone"/></svg><span class="num tnum">01733 808531</span></a>
+      </div>
+    </aside>
+    <div class="faq-list">
+      <details open>
+        <summary>How do I arrange home care in Peterborough?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>Call our Peterborough office on 01733 808531 or <a href="#callback">request a callback</a>. We'll discuss the support you need, arrange a home visit to carry out a free care assessment, and then create a care plan built around you.</p></div>
+      </details>
+      <details>
+        <summary>How quickly can home care start?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>Very quickly. We can often start care the next day, and in urgent situations, such as a hospital discharge, sometimes on the same day. If you're planning ahead, we'll work to a timescale that suits you.</p></div>
+      </details>
+      <details>
+        <summary>How much does home care cost?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>It depends on how much support is needed and how often, from a 30-minute visit to full-time live-in care. After your free assessment we'll give you a clear quote, so you know exactly what to expect before anything starts.</p><p class="ph">Optional: add a guide price, e.g. "Visiting care from £xx an hour". A starting price usually increases enquiries.</p></div>
+      </details>
+      <details>
+        <summary>Can I get help paying for care?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>Many families pay privately, but you may be eligible for support from Peterborough City Council, NHS Continuing Healthcare or Attendance Allowance. We can explain the options when you call. <a href="https://greenwoodhomecare.co.uk/how-pay-care/">How to pay for care</a>.</p><p class="ph">Confirm which funding routes Greenwood accepts (self-funded, council-funded, CHC, direct payments).</p></div>
+      </details>
+      <details>
+        <summary>What happens during a home care assessment?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>It's a relaxed conversation in your own home. We'll ask about your routines, your health, the support you already get from family or friends, and what would make the biggest difference day to day. The assessment is free and doesn't commit you to anything. Many families use it simply to understand their options.</p></div>
+      </details>
+      <details>
+        <summary>What home care services do you provide in Peterborough?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>Everything from short visits to help with medication or getting up in the morning, to longer and more frequent visits, night care and live-in care. Support can include personal care, medication, meal preparation, companionship and help around the home. <a href="#care">See the types of care</a>.</p></div>
+      </details>
+      <details>
+        <summary>How flexible is home care once it's set up?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>Very flexible. Someone may come home from hospital needing extra visits, or a family member who was helping may no longer be able to. We review and adjust your care plan as needs change, so your support always fits your situation.</p></div>
+      </details>
+      <details>
+        <summary>Do you only provide elderly care?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>No. Elderly care is a large part of what we do, but we also support younger adults and children living with disabilities or long-term conditions, and people recovering after surgery or a hospital stay.</p></div>
+      </details>
+      <details>
+        <summary>I'm not sure what kind of care we need. Is that a problem?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>Not at all, and it's very common. Working that out is a key part of the assessment. We'll explain the options and recommend what would genuinely help, so you don't need to have all the answers before you get in touch.</p></div>
+      </details>
+      <details>
+        <summary>Do you only cover Peterborough city?<span class="chev"><svg width="16" height="16"><use href="#i-chev"/></svg></span></summary>
+        <div class="ans"><p>No. We visit within 15 miles of Peterborough, including rural villages, and provide live-in care within 30 miles. <a href="#areas">Check your town</a> or give us a call.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section final" id="callback">
+  <div class="wrap">
+    <div class="final-copy">
+      <span class="eyebrow" style="color:var(--orange)">Talk to us today</span>
+      <h2>Speak to our Peterborough care team</h2>
+      <p class="lede">Friendly, practical advice from people who know the area. No pressure and no obligation.</p>
+      <a class="bignum tnum" href="tel:01733808531"><span class="ic"><svg width="26" height="26"><use href="#i-phone"/></svg></span>01733 808531</a>
+      <div class="facts">
+        <span><svg width="16" height="16"><use href="#i-check"/></svg>Free home assessment</span>
+        <span><svg width="16" height="16"><use href="#i-check"/></svg>Care often from the next day</span>
+        <span><svg width="16" height="16"><use href="#i-check"/></svg>CQC rated Good</span>
+      </div>
+    </div>
+    <div class="form-card">
+      <h3>Prefer us to call you?</h3>
+      <p class="sub">Leave your number and our Peterborough team will call you back <span class="ph">within one working day</span>.</p>
+      <form id="cbForm">
+        <div style="display:grid;gap:14px">
+          <fieldset class="field">
+            <legend>Who is the care for?</legend>
+            <div class="seg">
+              <input type="radio" name="for" id="forLoved" value="loved" checked><label for="forLoved">A loved one</label>
+              <input type="radio" name="for" id="forMe" value="me"><label for="forMe">Me</label>
+            </div>
+          </fieldset>
+          <div class="field"><label for="cbName">Your name</label><input id="cbName" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="cbPhone">Phone number</label><input id="cbPhone" name="phone" type="tel" autocomplete="tel" required></div>
+          <div class="field"><label for="cbTime">Best time to call</label>
+            <select id="cbTime" name="time"><option>Any time</option><option>Morning</option><option>Afternoon</option><option>Early evening</option></select>
+          </div>
+          <button class="btn btn-call" type="submit">Request my callback</button>
+        </div>
+      </form>
+      <div class="form-done" id="cbDone" role="status">Thank you. On the live site this would go straight to the Peterborough office. (Prototype: nothing has been sent.)</div>
+      <p class="form-note">We'll only use your details to contact you about care.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img class="foot-logo" src="assets/logo.svg" alt="Greenwood Homecare" width="163" height="41">
+        <div>
+          <div style="color:#fff;font-weight:600">Peterborough office</div>
+          <a class="foot-phone tnum" href="tel:01733808531">01733 808531</a>
+          <div>10 Flag Business Exchange, Vicarage Farm Road, Peterborough, PE1 5TX</div>
+        </div>
+        <div class="foot-cqc cqc-badge"><span class="inspected">Inspected and rated</span><span class="rated">Good</span><span class="cqc-logo"><svg aria-hidden="true"><use href="#i-cqc"/></svg>Care Quality Commission</span></div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul><li><a href="https://greenwoodhomecare.co.uk/care-at-home/">Care at home</a></li><li><a href="https://greenwoodhomecare.co.uk/speciality-services/">Specialist services</a></li><li><a href="https://greenwoodhomecare.co.uk/live-in-care/">24/7 live-in care</a></li><li><a href="https://greenwoodhomecare.co.uk/24-hour-care-at-home/">24-hour care at home</a></li></ul>
+      </div>
+      <div>
+        <h4>Other branches</h4>
+        <ul><li>Cambridge<br><a class="tnum" href="tel:01223850938" style="color:#fff">01223 850938</a></li><li>Grantham<br><a class="tnum" href="tel:01476849522" style="color:#fff">01476 849522</a></li></ul>
+      </div>
+      <div>
+        <h4>Greenwood</h4>
+        <ul><li><a href="https://greenwoodhomecare.co.uk/about-us/">Who we are</a></li><li><a href="https://greenwoodhomecare.co.uk/areas-we-cover/">Areas we cover</a></li><li><a href="#">Living well in Peterborough</a></li><li><a href="https://greenwoodhomecare.co.uk/become-a-carer-job-vacancies/">Become a carer</a></li><li><a href="#">Privacy notice</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-base"><span>© 2026 Greenwood Homecare</span><span>Design concept, not the live website</span></div>
+  </div>
+</footer>
+
+<div class="callbar" aria-label="Contact the Peterborough team">
+  <a class="btn btn-call" href="tel:01733808531"><svg width="18" height="18"><use href="#i-phone"/></svg><span class="num tnum" style="font-size:1.05rem">01733 808531</span></a>
+  <a class="btn btn-ghost" href="#callback">Callback</a>
+</div>
+
+<script>
+(function(){
+  var header=document.querySelector('.site-header');
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>8)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var t=document.getElementById('phToggle');
+  t.addEventListener('change',function(){document.body.classList.toggle('show-ph',t.checked)});
+
+  // Approximate straight-line miles from the Peterborough office
+  var towns={
+    'Peterborough':0,'Werrington':2.6,'Bretton':2.4,'Orton':2.5,'Hampton':3.2,'Eye':3.1,'Yaxley':3.8,'Castor':4.2,'Whittlesey':4.7,
+    'Glinton':5.3,'Thorney':6.6,'Wansford':7.3,'Crowland':7.9,'Market Deeping':8.1,'Deeping St James':8.2,'Elton':8.6,'Ramsey':10,
+    'Oundle':11.4,'Stamford':11.5,'Chatteris':13.8,'March':13.8,'Bourne':14.8,'Spalding':15.5,'Huntingdon':16.6,'Wisbech':19,
+    'St Ives':20.5,'Corby':21,'Oakham':23,'Thrapston':16.5,'Holbeach':20,'Kettering':26,'Uppingham':19
+  };
+  var list=document.getElementById('townList');
+  Object.keys(towns).sort().forEach(function(n){var o=document.createElement('option');o.value=n;list.appendChild(o)});
+  var form=document.getElementById('townForm'),input=document.getElementById('town'),out=document.getElementById('townResult');
+  var call='<a href="tel:01733808531">01733 808531</a>';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=input.value.trim();
+    out.classList.add('show');
+    if(!v){out.textContent='Type a town or village, for example Stamford.';return}
+    var key=Object.keys(towns).find(function(n){return n.toLowerCase()===v.toLowerCase()});
+    if(key===undefined){out.innerHTML='We cover many villages that aren\'t listed here. Call '+call+' and we\'ll tell you straight away.';return}
+    var d=towns[key];
+    if(d<=15) out.innerHTML='<b>Yes, we cover '+key+'</b> for visiting care and live-in care. Call '+call+' to arrange your free assessment.';
+    else if(d<=30) out.innerHTML='<b>'+key+' is within our live-in care area.</b> For visiting care, call '+call+' and we\'ll check for you.';
+    else out.innerHTML=key+' may be outside our area, but call '+call+' and we\'ll do our best to help.';
+  });
+
+  document.getElementById('cbForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!this.checkValidity()){this.reportValidity();return}
+    this.hidden=true;document.getElementById('cbDone').style.display='block';
+  });
+})();
+</script>
+</body>
+</html>
